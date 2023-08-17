@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share to Mastodon Link</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 40em;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        a {
+            display: inline-block;
+            padding: 1em;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 0.5em;
+            margin: 1em 0;
+        }
+        a:hover {
+            background: #369;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Share to Mastodon Link</h1>
+    <p>This is used on ChristianHeilmann.com to share the current post to Mastodon.</p>
+    <p>It is a simple link that opens a popup window with the Mastodon share dialog.</p>
+    <p>The main issue is that I can't know your mastodon instance. So the first time a user clicks the link, I ask for the instance and store it subsequently in local storage.</p> 
+    <a href="#" target="mastodon" class="mastodon-share">Share to Mastodon</a>
+    <script src="mastodon-share.js"></script>
+</body>
+</html>
