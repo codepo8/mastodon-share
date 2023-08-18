@@ -21,7 +21,7 @@ const setinstance = _ => {
 
 // create and insert the edit link
 const createeditbutton = _ => {
-    if (!button.querySelector('.mastodon-edit')) return;
+    if (button.querySelector('.mastodon-edit')) return;
     let editlink = document.createElement('button');
       editlink.innerText = '✏️';
       editlink.classList.add('mastodon-edit');
