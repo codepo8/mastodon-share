@@ -15,14 +15,13 @@ const setinstance = _ => {
     let instance = window.prompt(prompt);
     if(instance) {
         localStorage.setItem(key, instance);
-        if (!button.querySelector('.mastodon-edit')) {
-            createeditbutton();
-        }
+        createeditbutton();
     }
 }
 
 // create and insert the edit link
 const createeditbutton = _ => {
+    if (!button.querySelector('.mastodon-edit')) return;
     let editlink = document.createElement('button');
       editlink.innerText = '✏️';
       editlink.classList.add('mastodon-edit');
