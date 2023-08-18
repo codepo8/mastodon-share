@@ -17,7 +17,9 @@ I've made all the things you want to show to the user editable in the link.
     <script src="mastodon-share.js"></script>
 ```
 
-The first time users click the share button, it asks for their mastodon instance and stores it in local storage. Subsequently you can just click the link. 
+The first time users click the share button, it asks for their mastodon instance and stores it in local storage. Subsequently you can just click the link. Here's how that looks as a GIF recording:
+
+![Recording of the interaction](share-to-mastodon.gif)
 
 You also get an edit link next to the share button to edit your instance in case you made a mistake.
 
