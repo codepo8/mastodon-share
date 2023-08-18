@@ -1,26 +1,33 @@
 
-// labels and shizzle…
+// I got the key, I got the secret…
 let key = 'mastodon-instance';
-let prompt = 'Please tell me your Mastodon instance';
-let editmessage = 'Edit your Mastodon instance';
 
 // get the link from the DOM
 const button = document.querySelector('.mastodon-share');
 
+// labels and texts from the link
+let prompt = button.dataset.prompt || 'Please tell me your Mastodon instance';
+let editlabel = button.dataset.editlabel || 'Edit your Mastodon instance';
+let edittext = button.dataset.edittext || '✏️';
+
 // Ask the user for the instance name and set it…
 const setinstance = _ => {
     let instance = window.prompt(prompt);
-    localStorage.setItem(key, instance);
+    if(instance) {
+        localStorage.setItem(key, instance);
+        if (!button.querySelector('.mastodon-edit')) {
+            createeditbutton();
+        }
+    }
 }
 
 // create and insert the edit link
-const createeditlink = _ => {
-    let editlink = document.createElement('a');
-      editlink.href = '#';
+const createeditbutton = _ => {
+    let editlink = document.createElement('button');
       editlink.innerText = '✏️';
-      editlink.classList.add('edit');
-      editlink.title = editmessage;
-      editlink.ariaLabel = editmessage;
+      editlink.classList.add('mastodon-edit');
+      editlink.title = editlabel;
+      editlink.ariaLabel = editlabel;
       editlink.addEventListener('click', (e) => {
           e.preventDefault();
           localStorage.removeItem(key);
@@ -31,7 +38,7 @@ const createeditlink = _ => {
 
 // if there is  a value in localstorage, create the edit link
 if(localStorage.getItem(key)) {
-    createeditlink();
+    createeditbutton();
 }  
 
 // When a user clicks the link
