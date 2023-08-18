@@ -6,7 +6,7 @@ To use it, add the script and put a link where you want to share to mastodon.
 I've made all the things you want to show to the user editable in the link.
 
 ```HTML
-    <a href="#" 
+    <a href="#" rel="noreferrer noopener" 
         target="mastodon" 
         data-prompt="Please tell me your Mastodon instance" 
         data-edittext="✏️" 
