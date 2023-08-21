@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub include - turn GitHub repo links into more detailed views</title>
+</head>
+<body>
+
+<div class="github-include">
+    <a href="https://github.com/codepo8/mastodon-share">Mastodon Share</a>
+</div>
+    
+<script>
+
+    let feed = 'https://github.com/codepo8/mastodon-share/commits/main.atom';
+    let container = document.querySelector('.github-include');
+    fetch(feed,   {'origin': "http://localhost:8081",'Content-Type':'application/json',
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'})
+        .then(response => response.text())
+        // .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(data => {
+            console.log(data);
+            // let items = data.querySelectorAll("item");
+            let html = '';
+            // items.forEach(el => {
+            //     let title = el.querySelector("title").innerHTML;
+            //     let link = el.querySelector("link").innerHTML;
+            //     let description = el.querySelector("description").innerHTML;
+            //     let pubDate = el.querySelector("pubDate").innerHTML;
+            //     html += `<div class="item">
+            //         <h2><a href="${link}">${title}</a></h2>
+            //         <p>${description}</p>
+            //         <p>${pubDate}</p>
+            //     </div>`;
+            // });
+            // container.innerHTML = html;
+        });
+</script>
+</body>
+</html>
