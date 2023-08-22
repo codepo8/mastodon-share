@@ -6,6 +6,11 @@ let instance = localStorage.getItem(key);
 // get the link from the DOM
 const button = document.querySelector('.mastodon-share');
 
+// refresh the link with the instance name
+const refreshlink = (instance) => {
+    button.href = `https://${instance}/share?text=${encodeURIComponent(document.title)}%0A${encodeURIComponent(location.href)}`;
+}
+
 // got it? Let's go! 
 if (button) {
     // labels and texts from the link
@@ -19,6 +24,8 @@ if (button) {
         if(instance) {
             localStorage.setItem(key, instance);
             createeditbutton();
+            refreshlink(instance);
+            button.click();
         }
     }
     
@@ -50,8 +57,7 @@ if (button) {
         // and it is in localstorage write out the link href 
         // with the instance and the current page title and URL
         if(localStorage.getItem(key)) {
-            button.href = `https://${localStorage.getItem(key)}/share?text=${encodeURIComponent(document.title)}%0A${encodeURIComponent(location.href)}`;
-
+            refreshlink(localStorage.getItem(key));
             // otherwise, prompt the user for their instance and save it to localstorage
         } else {
             e.preventDefault();
